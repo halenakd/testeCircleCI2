@@ -1,9 +1,14 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/testeCircleCI2
+    docker:
+      - image: gcc:latest
+    working_directory: ~/project
     steps:
       - checkout
-      - run: mkdir -p build
-      - run: cd build && make .. && ./myproject
-      - run: cd build && ctest
+      - run: gcc -o helloworld helloworld.c
+workflows:
+  version: 2
+  build_and_test:
+  jobs:
+      - build
