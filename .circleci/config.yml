@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: mkdir -p build
+      - run: cd build && make .. && ./myproject
+      - run: cd build && ctest
